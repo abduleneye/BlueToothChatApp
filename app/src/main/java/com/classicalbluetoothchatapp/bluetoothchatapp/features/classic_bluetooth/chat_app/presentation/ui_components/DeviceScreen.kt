@@ -1,5 +1,6 @@
 package com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.presentation.ui_components
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,6 +14,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -25,6 +27,8 @@ fun DeviceScreen(
     onStartScan: () -> Unit,
     onStopScan: () -> Unit
 ){
+
+    val context = LocalContext.current
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -44,11 +48,18 @@ fun DeviceScreen(
             horizontalArrangement = Arrangement.SpaceAround
         ){
 
-            Button(onClick = {onStartScan}) {
+            Button(onClick = {
+                onStartScan
+                Toast.makeText(context, "Start button", Toast.LENGTH_LONG).show()
+
+            }) {
                 Text(text = "Start Scan")
 
             }
-            Button(onClick = {onStopScan}) {
+            Button(onClick = {
+                Toast.makeText(context, "Stop button", Toast.LENGTH_LONG).show()
+                onStopScan
+            }) {
                 Text(text = "Stop Scan")
 
             }
