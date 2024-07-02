@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothManager
 import android.content.Context
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.widget.Toast
 import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.data.BluetoothDevice
 import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.data.BluetoothDeviceDomain
 import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.domain.BluetoothController
@@ -56,9 +57,13 @@ class AndroidBluetoothController(
         updatePairedDevices()
     }
     override fun startDiscovery() {
+        Toast.makeText(context, "Started discovery ent", Toast.LENGTH_LONG).show()
+
         if (!hasPermission(Manifest.permission.BLUETOOTH_SCAN)){
+            Toast.makeText(context, "Started discovery ret", Toast.LENGTH_LONG).show()
             return
         }
+        Toast.makeText(context, "Started discovery", Toast.LENGTH_LONG).show()
 
         context.registerReceiver(
             foundDeviceReceiver,
