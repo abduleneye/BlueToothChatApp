@@ -63,10 +63,10 @@ class AndroidBluetoothController(
 
         Toast.makeText(context, "Started discovery ent", Toast.LENGTH_LONG).show()
 
-        if (!hasPermission(Manifest.permission.BLUETOOTH_SCAN)){
-            Toast.makeText(context, "Started discovery ret", Toast.LENGTH_LONG).show()
-            return
-        }
+//        if (!hasPermission(Manifest.permission.BLUETOOTH_SCAN)){
+//            Toast.makeText(context, "Started discovery ret", Toast.LENGTH_LONG).show()
+//            return
+//        }
         Toast.makeText(context, "Started discovery", Toast.LENGTH_LONG).show()
 
         context.registerReceiver(
@@ -95,10 +95,10 @@ class AndroidBluetoothController(
     //get list of paired devices
     private fun updatePairedDevices(){
 
-        if(!hasPermission(Manifest.permission.BLUETOOTH_CONNECT)){
-            return
-            Log.d("Chk", "Succ")
-        }
+//        if(!hasPermission(Manifest.permission.BLUETOOTH_CONNECT)){
+//            Log.d("Chk", "Failed Pair")
+//            return
+//        }
 
         bluetoothAdapter
             ?.bondedDevices
