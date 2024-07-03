@@ -1,5 +1,6 @@
 package com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.presentation.ui_components
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -49,7 +50,8 @@ fun DeviceScreen(
         ){
 
             Button(onClick = {
-                onStartScan
+                onStartScan()
+                Log.d("Chk", "Start UI")
                 Toast.makeText(context, "Start button", Toast.LENGTH_LONG).show()
 
             }) {
@@ -58,7 +60,7 @@ fun DeviceScreen(
             }
             Button(onClick = {
                 Toast.makeText(context, "Stop button", Toast.LENGTH_LONG).show()
-                onStopScan
+                onStopScan()
             }) {
                 Text(text = "Stop Scan")
 

@@ -1,5 +1,6 @@
 package com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.presentation
 
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -31,9 +32,12 @@ class BluetoothViewModel @Inject constructor(
 
     fun startScan(){
         bluetoothController.startDiscovery()
+        Log.d("Chk", "Start VM")
+
     }
 
     fun stopScan(){
-         bluetoothController.stopDiscovery()
+        Log.d("Chk", "Stop VM")
+        bluetoothController.stopDiscovery()
     }
 }

@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothManager
 import android.content.Context
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.util.Log
 import android.widget.Toast
 import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.data.BluetoothDevice
 import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.data.BluetoothDeviceDomain
@@ -30,6 +31,7 @@ class AndroidBluetoothController(
         bluetoothManager?.adapter
     }
 
+    //test: listOf(BluetoothDeviceDomain(name = "test", address = "test"))
     private  val _scannedDevices = MutableStateFlow<List<BluetoothDeviceDomain>>(emptyList())
     override val scannedDevices: StateFlow<List<BluetoothDevice>>
         get() = _scannedDevices.asStateFlow()
@@ -57,6 +59,8 @@ class AndroidBluetoothController(
         updatePairedDevices()
     }
     override fun startDiscovery() {
+        Log.d("Chk", "Start")
+
         Toast.makeText(context, "Started discovery ent", Toast.LENGTH_LONG).show()
 
         if (!hasPermission(Manifest.permission.BLUETOOTH_SCAN)){
@@ -73,6 +77,8 @@ class AndroidBluetoothController(
         updatePairedDevices()
 
         bluetoothAdapter?.startDiscovery()
+        Log.d("Chk", "Start")
+
     }
 
     override fun stopDiscovery() {
@@ -91,6 +97,7 @@ class AndroidBluetoothController(
 
         if(!hasPermission(Manifest.permission.BLUETOOTH_CONNECT)){
             return
+            Log.d("Chk", "Succ")
         }
 
         bluetoothAdapter
