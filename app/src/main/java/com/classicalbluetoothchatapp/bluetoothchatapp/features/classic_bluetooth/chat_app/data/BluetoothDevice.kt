@@ -1,8 +1,6 @@
 package com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.data
 
+import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.domain.BluetoothDevice
+
 
 typealias BluetoothDeviceDomain = BluetoothDevice
-data class BluetoothDevice(
-    val name: String?,
-    val address: String?
-)
