@@ -20,13 +20,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.domain.BluetoothDevice
+import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.domain.BluetoothDeviceDomain
 import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.presentation.BluetoothUiState
 
 @Composable
 fun DeviceScreen(
     state: BluetoothUiState,
     onStartScan: () -> Unit,
-    onStopScan: () -> Unit
+    onStopScan: () -> Unit,
+    onDeviceClicked: (BluetoothDevice) -> Unit,
+    onStartServer: ()-> Unit
 ){
 
     val context = LocalContext.current
@@ -38,7 +41,9 @@ fun DeviceScreen(
         BluetoothDeviceList(
             pairedDevices = state.pairedDevices,
             scannedDevices = state.scannedDevices,
-            onClick = {},
+            onClick =
+              onDeviceClicked
+            ,
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f))
@@ -49,20 +54,26 @@ fun DeviceScreen(
             horizontalArrangement = Arrangement.SpaceAround
         ){
 
-            Button(onClick = {
-                onStartScan()
-                Log.d("Chk", "Start UI")
-                Toast.makeText(context, "Start button", Toast.LENGTH_LONG).show()
+            Button(onClick = onStartScan
+              //  Log.d("Chk", "Start UI")
+                //Toast.makeText(context, "Start button", Toast.LENGTH_LONG).show()
 
-            }) {
+            ) {
                 Text(text = "Start Scan")
 
             }
-            Button(onClick = {
-                Toast.makeText(context, "Stop button", Toast.LENGTH_LONG).show()
-                onStopScan()
-            }) {
+            Button(onClick =
+               // Toast.makeText(context, "Stop button", Toast.LENGTH_LONG).show()
+                onStopScan
+            ) {
                 Text(text = "Stop Scan")
+
+            }
+            Button(onClick =
+               // Toast.makeText(context, "Server button clicked", Toast.LENGTH_LONG).show()
+                onStartServer
+            ) {
+                Text(text = "Start Sever")
 
             }
 
@@ -95,6 +106,15 @@ fun BluetoothDeviceList(
         items(pairedDevices){device ->
             Text(
                 text = device.name?: "(No name)",
+
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { onClick(device) }
+                    .padding(16.dp)
+            )
+            Text(
+                text = device.address?: "(No addr)",
+
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable { onClick(device) }
@@ -115,6 +135,14 @@ fun BluetoothDeviceList(
         items(scannedDevices){device ->
             Text(
                 text = device.name?: "(No name)",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { onClick(device) }
+                    .padding(16.dp)
+            )
+            Text(
+                text = device.address?: "(No addr)",
+
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable { onClick(device) }

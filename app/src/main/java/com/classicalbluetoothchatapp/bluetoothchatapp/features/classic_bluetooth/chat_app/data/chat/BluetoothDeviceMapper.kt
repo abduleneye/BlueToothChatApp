@@ -2,8 +2,9 @@ package com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetoot
 
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothDevice
-import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.data.BluetoothDeviceDomain
+import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.domain.BluetoothDeviceDomain
 
+//Need To Understand
 @SuppressLint("MissingPermission")
 fun BluetoothDevice.toBluetoothDeviceDomain(): BluetoothDeviceDomain{
     return BluetoothDeviceDomain(
