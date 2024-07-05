@@ -27,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.presentation.ui_components.ChatScreen
 import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.presentation.ui_components.DeviceScreen
 import com.classicalbluetoothchatapp.bluetoothchatapp.ui.theme.BlueToothChatAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -130,12 +131,6 @@ class MainActivity : ComponentActivity() {
 
                 }
 
-
-
-
-
-
-
                 Surface(
                     color = MaterialTheme.colorScheme.background
                 ) {
@@ -154,7 +149,17 @@ class MainActivity : ComponentActivity() {
 
 
                             }
-                        }else -> {
+                        }
+
+                        state.isConnected -> {
+                            ChatScreen(
+                                state = state,
+                                onDisconnect = viewModel::disconnectFromDevice,
+                                onSendMessage = viewModel::sendMessage
+                            )
+                        }
+
+                        else -> {
                         DeviceScreen(
                             onStartScan = viewModel::startScan,
                             onStopScan = viewModel::stopScan,

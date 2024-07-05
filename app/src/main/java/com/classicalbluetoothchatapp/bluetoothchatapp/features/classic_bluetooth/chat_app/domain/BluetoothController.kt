@@ -1,5 +1,6 @@
 package com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.domain
 
+import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.domain.chat.BlueToothMessage
 import com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetooth.chat_app.domain.chat.ConnectionResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharedFlow
@@ -22,6 +23,8 @@ interface BluetoothController {
     fun startBlueToothServer(): Flow<ConnectionResult>
 
     fun connectToDevice(device: BluetoothDeviceDomain): Flow<ConnectionResult>
+
+    suspend fun trySendingMesage(message: String): BlueToothMessage?
 
     fun closeConnection()
 

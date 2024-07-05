@@ -3,5 +3,8 @@ package com.classicalbluetoothchatapp.bluetoothchatapp.features.classic_bluetoot
 sealed interface ConnectionResult {
 
     object connectionEstablished: ConnectionResult
+
+    data class TransferSucceeded(val message: BlueToothMessage): ConnectionResult
+
     data class Error(val message: String): ConnectionResult
 }
