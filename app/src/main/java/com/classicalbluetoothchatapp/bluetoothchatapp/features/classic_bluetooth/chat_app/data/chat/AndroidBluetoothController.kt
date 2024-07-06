@@ -151,10 +151,10 @@ class AndroidBluetoothController(
 
     override fun startBlueToothServer(): Flow<ConnectionResult> {
         return flow{
-            if(!hasPermission(Manifest.permission.BLUETOOTH_CONNECT)){
-                throw SecurityException("BLUETOOTH_CONNECT permission")
-
-            }
+//            if(!hasPermission(Manifest.permission.BLUETOOTH_CONNECT)){
+//                throw SecurityException("BLUETOOTH_CONNECT permission")
+//
+//            }
           currentServerSocket =   bluetoothAdapter?.listenUsingRfcommWithServiceRecord(
                 "Chat_service",
                 UUID.fromString(SERVICE_UUID)
@@ -209,8 +209,8 @@ class AndroidBluetoothController(
                 ?.createInsecureRfcommSocketToServiceRecord(UUID.fromString(SERVICE_UUID))
             stopDiscovery()
 
-           // blueToothDevice?.createBond()
-            currentClientSocket?.connect()
+        //   blueToothDevice?.createBond()
+        //    currentClientSocket?.connect()
 
 
 //            if (bluetoothAdapter?.bondedDevices?.contains(blueToothDevice) == false){
@@ -288,9 +288,9 @@ class AndroidBluetoothController(
     }
 
     override suspend fun trySendingMesage(message: String): BlueToothMessage? {
-        if (!hasPermission((Manifest.permission.BLUETOOTH_CONNECT))){
-            return null
-        }
+//        if (!hasPermission((Manifest.permission.BLUETOOTH_CONNECT))){
+//            return null
+//        }
 
         if (dataTransferService == null){
             return null

@@ -136,17 +136,23 @@ class MainActivity : ComponentActivity() {
                 ) {
                     when{
                         state.isConnecting ->{
-                            Box(modifier =
-                            Modifier.fillMaxSize(),
-                            )
-//                                horizontalAlignment = Alignment.CenterHorizontally,
-//                                verticalArrangement = Arrangement.Center)
-                               {
-//                                CircularProgressIndicator(
-//                                    modifier = modifier
-//                                )
-                                Text(text = "Connecting..")
+                            Box(
+                                modifier =
+                                Modifier
+                                    .fillMaxSize()
+                            ) {
 
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxSize(),
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+
+                                   // CircularProgressIndicator()
+                                    Text(text = "Connecting...")
+
+                                }
 
                             }
                         }
