@@ -21,10 +21,10 @@ object AppModule {
         return AndroidBluetoothController(context = context)
     }
 
-    @Provides
-    @Singleton
-    fun provideBlueToothAdapter(@ApplicationContext context: Context): BluetoothAdapter{
-        val manager = context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
-        return manager.adapter
-    }
+//    @Provides
+//    @Singleton
+//    fun provideBlueToothAdapter(@ApplicationContext context: Context): BluetoothAdapter{
+//        val manager = context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+//        return manager.adapter
+//    }
 }

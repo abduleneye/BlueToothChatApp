@@ -19,6 +19,8 @@
         android:usesPermissionFlags="neverForLocation"/>
 
 <uses-feature android:name="android.hardware.bluetooth"/>
+    <uses-feature android:name="android.hardware.bluetooth_le"/>
+
 
 
 
